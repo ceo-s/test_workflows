@@ -1,0 +1,19 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+env:
+  SSH_KEY: some_key
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ secrets.SSH_KEY }}
+          ssh-known-hosts: ${{ secrets.ALLOWED_HOSTS }}
+      - name: Remote acces
+        run: |
+          ssh admin@${{secrets.SERVER_IP}} "echo hello"
+          cat index.html
