@@ -12,6 +12,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Init ssh-key
         run: |
+          cd 
+          cd ..
+          ls
           mkdir test
           ls
           echo aue_citati > test.txt
