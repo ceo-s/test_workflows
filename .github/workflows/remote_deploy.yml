@@ -10,12 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Init ssh-key
+      - name: Create SSH key
         run: |
-          cd 
-          cd ..
-          ls
-          mkdir test
-          ls
-          echo aue_citati > test.txt
-          cat ~/test/test.txt
+          mkdir -p ~/.ssh
+          echo ${{ secrets.SSH_KEY }} > ../private.key
+          sudo chmod 600 ../private.key
+          echo ${{ secrets.ALLOWED_HOSTS }} > ~/.ssh/known_hosts
+          echo "Somebullshitbruh" | ssh admin@${{secrets.SERVER_IP}} "cat > /some_stupid_file.txt"
