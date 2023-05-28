@@ -19,4 +19,4 @@ jobs:
           echo "${{ secrets.SSH_KEY }}" > ../private.key
           sudo chmod 600 ../private.key
           echo "${{ secrets.ALLOWED_HOSTS }}" > ~/.ssh/known_hosts
-          echo "Somebullshitbruh" | ssh admin@${{secrets.SERVER_IP}} "cat > /some_stupid_file.txt"
+          echo "Somebullshitbruh" | ssh -oStrictHostKeyChecking=no admin@${{secrets.SERVER_IP}} "cat > /some_stupid_file.txt"
