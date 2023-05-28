@@ -17,6 +17,5 @@ jobs:
           echo "StrictHostKeyChecking no" >> ~/.ssh/config
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
-          sudo chmod 600 ../private.key
           echo "${{ secrets.ALLOWED_HOSTS }}" > ~/.ssh/known_hosts
           echo "Somebullshitbruh" | ssh admin@${{secrets.SERVER_IP}} "cat > /some_stupid_file.txt"
