@@ -1,0 +1,2 @@
+          mkdir -p ~/.ssh && cd .ssh
+          echo строка_публичного_ключа >> ~/.ssh/authorized_keys

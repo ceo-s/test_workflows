@@ -1,0 +1,14 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - master
+jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Init ssh-key
+        run: |
+          echo joe mama so fast
+          echo yes ima polite
