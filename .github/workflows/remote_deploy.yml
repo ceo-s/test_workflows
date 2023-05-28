@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+env:
+  SSH_KEY: some_key
 jobs:
   init:
     runs-on: ubuntu-latest
