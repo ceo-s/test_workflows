@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v3
       - name: Create SSH key
         run: |
+          echo "HOST *" > ~/.ssh/config
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ../private.key
