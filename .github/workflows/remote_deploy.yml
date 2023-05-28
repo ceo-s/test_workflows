@@ -18,4 +18,5 @@ jobs:
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           echo "${{ secrets.ALLOWED_HOSTS }}" > ~/.ssh/known_hosts
-          echo "Somebullshitbruh" | ssh admin@${{secrets.SERVER_IP}} "cat > /some_stupid_file.txt"
+          ssh admin@${{secrets.SERVER_IP}} "echo hello"
+          cat index.html

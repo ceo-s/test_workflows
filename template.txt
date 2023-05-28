@@ -1,3 +1,2 @@
-          mkdir -p ~/.ssh
-          echo ${{ secrets.SSH_KEY }} >> ~/.ssh/id_rsa
+          echo "Somebullshitbruh" | ssh admin@${{secrets.SERVER_IP}} "cat > /some_stupid_file.txt"
 
