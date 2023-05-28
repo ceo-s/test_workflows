@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy2
 on:
   push:
     branches:
@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          ssh-key: "${{ secrets.SSH_KEY }}"
-          ssh-known-hosts: "${{ secrets.ALLOWED_HOSTS }}"
-      - name: Remote acces
+      - name: Create SSH key
         run: |
-          ssh admin@${{secrets.SERVER_IP}} "echo hello"
+          mkdir -p ~/.ssh
+          echo "HOST *" > ~/.ssh/config
+          echo "StrictHostKeyChecking no" >> ~/.ssh/config
+          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.ALLOWED_HOSTS }}" > ~/.ssh/known_hosts
+          ssh admin@${{secrets.SERVER_IP}} "echo hello $$ echo hi"
+
           cat index.html

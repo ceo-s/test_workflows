@@ -1,4 +1,4 @@
-name: Deploy1
+name: Deploy4
 on:
   push:
     branches:
@@ -18,5 +18,5 @@ jobs:
           install -m 600 -D /dev/null ~/.ssh/id_rsa
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           echo "${{ secrets.ALLOWED_HOSTS }}" > ~/.ssh/known_hosts
-          ssh admin@${{secrets.SERVER_IP}} "echo hello > helloworld.txt"
-          cat index.html
+          ssh admin@${{secrets.SERVER_IP}} "echo hello"
+          scp index.html admin@${{secrets.SERVER_IP}}:
