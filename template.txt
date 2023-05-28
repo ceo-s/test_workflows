@@ -1,2 +1,3 @@
-          mkdir -p ~/.ssh && cd .ssh
-          echo строка_публичного_ключа >> ~/.ssh/authorized_keys
+          mkdir -p ~/.ssh
+          echo ${{ secrets.SSH_KEY }} >> ~/.ssh/id_rsa
+
